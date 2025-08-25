@@ -11,12 +11,20 @@ config_version=5
 [application]
 
 config/name="Uno No Mercy"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneScout="*res://addons/GD_NET_ScOUT/SceneScout.cs"
 
 [dotnet]
 
 project/assembly_name="Uno No Mercy"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/GD_NET_ScOUT/plugin.cfg")
 
 [rendering]
 
