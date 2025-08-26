@@ -1,3 +1,4 @@
+using System.Linq;
 using GD_NET_ScOUT;
 using Godot;
 using UnoNoMercy.Cards;
@@ -165,10 +166,18 @@ public partial class Tester : Node
         }
     }
 
+    [Test]
+    private void PlayerHandTest()
+    {
+        Card blueFour = GetRedNine();
+        Player player = new Player([blueFour]);
+        Assert.IsTrue(player.Hand.Contains(blueFour));
+    }
+
     private void AssertPlay(Card card)
     {
-        _playController.Play(card);
-        Assert.AreEqual(_discardPile.TopCard, card);
+        Assert.DoesNotThrow<UnoNoMercyException>(() => _playController.Play(card));
+        AssertCardIsOnTopPile(card);
     }
 
     private void AssertCardIsOnTopPile(Card card)

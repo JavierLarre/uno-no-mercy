@@ -14,7 +14,7 @@ public class PlayableCardValidator
             return true;
         if (_discardCard.Value == card.Value)
             return true;
-        if (IsAnyWild(card))
+        if (IsWild(card) || IsWild(_discardCard))
             return true;
         if (IsCardDrawEffect(_discardCard))
             return IsCardDrawEffect(card);
@@ -26,8 +26,8 @@ public class PlayableCardValidator
         return card.Value is CardValue.DrawFour or CardValue.DrawTwo;
     }
 
-    private bool IsAnyWild(Card card)
+    private static bool IsWild(Card card)
     {
-        return _discardCard.Color is CardColor.Wild || card.Color is CardColor.Wild;
+        return card.Color is CardColor.Wild;
     }
 }
