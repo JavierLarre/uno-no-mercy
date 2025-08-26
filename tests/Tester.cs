@@ -94,6 +94,7 @@ public partial class Tester : Node
     [Test]
     private void PlaySpecialCards()
     {
+        _discardPile.TopCard.Color = CardColor.Red;
         Card[] specialCards = 
         [
             new()
