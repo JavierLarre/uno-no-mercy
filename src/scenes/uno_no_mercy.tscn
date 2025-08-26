@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://byw8fv1p6pio4"]
 
-[ext_resource type="Script" uid="uid://ch8adfalym5wj" path="res://src/scripts/UnoNoMercy.cs" id="1_63bk8"]
+[ext_resource type="Script" path="res://src/scripts/UnoNoMercy.cs" id="1_63bk8"]
 
 [node name="UnoNoMercy" type="Control"]
 layout_mode = 3
