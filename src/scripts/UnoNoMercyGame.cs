@@ -1,6 +1,8 @@
 using Godot;
 
-public partial class UnoNoMercy : Control
+namespace UnoNoMercy.scripts;
+
+public partial class UnoNoMercyGame : Control
 {
     public override void _Ready()
     {
