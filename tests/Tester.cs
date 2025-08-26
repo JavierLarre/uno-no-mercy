@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using GD_NET_ScOUT;
 using Godot;
 using UnoNoMercy.Cards;
@@ -21,15 +19,12 @@ public partial class Tester : Node
         _playController = new CardPlayerController(_discardPile);
 
     }
-    private static Card GetGreenEight()
-    {
-        Card greenEight = new Card
+    private static Card GetGreenEight() =>
+        new()
         {
             Value = CardValue.Eight,
             Color = CardColor.Green
         };
-        return greenEight;
-    }
 
     private static Card[] GetGreenEights(int sequenceLength)
     {
@@ -42,23 +37,31 @@ public partial class Tester : Node
         return validCards;
     }
 
+    private static Card GetRedNine() =>
+        new()
+        {
+            Color = CardColor.Red,
+            Value = CardValue.Nine
+        };
+
     [Test]
     private void DiscardPileTest()
     {
         _discardPile = new DiscardPile(_greenEight);
-        AssertCardIsOnTopPile();
+        AssertCardIsOnTopPile(_greenEight);
+        
         _greenEight = GetGreenEight();
-        _discardPile.Add(_greenEight);
-        AssertCardIsOnTopPile();
+        _discardPile.TopCard = _greenEight;
+        AssertCardIsOnTopPile(_greenEight);
+        
         _greenEight = GetGreenEight();
-        Assert.AreNotEqual(_discardPile.Peek(), _greenEight);
+        Assert.AreNotEqual(_discardPile.TopCard, _greenEight);
     }
 
     [Test]
     private void PlayTest()
     {
-        _playController.Play(_greenEight);
-        Assert.AreEqual(_greenEight, _discardPile.Peek());
+        AssertPlay(_greenEight);
     }
 
     [Test]
@@ -67,20 +70,26 @@ public partial class Tester : Node
         const int sequenceLength = 3;
         Card[] validCards = GetGreenEights(sequenceLength);
 
-        foreach (Card validCard in validCards)
-        {
+        foreach (Card validCard in validCards) 
             AssertPlay(validCard);
-        }
+    }
+
+    [Test]
+    private void IsCardPlayableTest()
+    {
+        Card redNine = GetRedNine();
+        
+        Assert.IsFalse(_playController.IsPlayable(redNine));
     }
 
     private void AssertPlay(Card card)
     {
         _playController.Play(card);
-        Assert.AreEqual(_discardPile.Peek(), card);
+        Assert.AreEqual(_discardPile.TopCard, card);
     }
 
-    private void AssertCardIsOnTopPile()
+    private void AssertCardIsOnTopPile(Card card)
     {
-        Assert.AreEqual(_discardPile.Peek(), _greenEight);
+        Assert.AreEqual(_discardPile.TopCard, card);
     }
 }

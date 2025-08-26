@@ -14,6 +14,7 @@ config/name="Uno No Mercy"
 run/main_scene="uid://byw8fv1p6pio4"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+run/main_scene.gdnetscout="res://tests/TestRunner/test_runner.tscn"
 
 [autoload]
 

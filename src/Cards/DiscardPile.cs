@@ -4,6 +4,12 @@ namespace UnoNoMercy.Cards;
 
 public class DiscardPile
 {
+    public Card TopCard
+    {
+        get => _cards.Peek();
+        set => _cards.Push(value);
+    }
+
     private Stack<Card> _cards;
 
     public DiscardPile(Card firstCard)
@@ -12,6 +18,4 @@ public class DiscardPile
         _cards.Push(firstCard);
     }
 
-    public void Add(Card card) => _cards.Push(card);
-    public Card Peek() => _cards.Peek();
 }

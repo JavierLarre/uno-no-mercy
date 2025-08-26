@@ -10,6 +10,11 @@ public class CardPlayerController
 
     public void Play(Card card)
     {
-        _discardPile.Add(card);
+        _discardPile.TopCard = card;
+    }
+
+    public bool IsPlayable(Card card)
+    {
+        return false;
     }
 }
