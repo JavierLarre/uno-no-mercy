@@ -10,11 +10,15 @@ public class CardPlayerController
 
     public void Play(Card card)
     {
+        if (!IsPlayable(card))
+            throw new UnoNoMercyException();
+        
         _discardPile.TopCard = card;
     }
 
     public bool IsPlayable(Card card)
     {
-        return false;
+        Card topCard = _discardPile.TopCard;
+        return card.Color == topCard.Color || card.Value == topCard.Value;
     }
 }

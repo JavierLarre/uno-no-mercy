@@ -55,7 +55,7 @@ public partial class Tester : Node
         AssertCardIsOnTopPile(_greenEight);
         
         _greenEight = GetGreenEight();
-        Assert.AreNotEqual(_discardPile.TopCard, _greenEight);
+        AssertIsNotEqualToTopCard(_greenEight);
     }
 
     [Test]
@@ -80,6 +80,15 @@ public partial class Tester : Node
         Card redNine = GetRedNine();
         
         Assert.IsFalse(_playController.IsPlayable(redNine));
+        Assert.IsTrue(_playController.IsPlayable(_greenEight));
+    }
+
+    [Test]
+    private void TryPlayInvalidCardTest()
+    {
+        Card redNine = GetRedNine();
+        Assert.Throws<UnoNoMercyException>(() => _playController.Play(redNine));
+        AssertIsNotEqualToTopCard(redNine);
     }
 
     private void AssertPlay(Card card)
@@ -91,5 +100,10 @@ public partial class Tester : Node
     private void AssertCardIsOnTopPile(Card card)
     {
         Assert.AreEqual(_discardPile.TopCard, card);
+    }
+
+    private void AssertIsNotEqualToTopCard(Card card)
+    {
+        Assert.AreNotEqual(_discardPile.TopCard, card);
     }
 }
