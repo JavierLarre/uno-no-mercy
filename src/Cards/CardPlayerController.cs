@@ -19,6 +19,6 @@ public class CardPlayerController
     public bool IsPlayable(Card card)
     {
         Card topCard = _discardPile.TopCard;
-        return card.Color == topCard.Color || card.Value == topCard.Value;
+        return card.Color == topCard.Color || card.Value == topCard.Value || card.Color is CardColor.Wild;
     }
 }

@@ -2,5 +2,5 @@ namespace UnoNoMercy.Cards;
 
 public enum CardColor
 {
-    Green, Red
+    Green, Red, Blue, Yellow, Wild
 }

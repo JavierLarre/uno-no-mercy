@@ -40,8 +40,8 @@ public partial class Tester : Node
     private static Card GetRedNine() =>
         new()
         {
-            Color = CardColor.Red,
-            Value = CardValue.Nine
+            Color = CardColor.Blue,
+            Value = CardValue.Four
         };
 
     [Test]
@@ -89,6 +89,79 @@ public partial class Tester : Node
         Card redNine = GetRedNine();
         Assert.Throws<UnoNoMercyException>(() => _playController.Play(redNine));
         AssertIsNotEqualToTopCard(redNine);
+    }
+
+    [Test]
+    private void PlaySpecialCards()
+    {
+        Card[] specialCards = 
+        [
+            new()
+            {
+                Color = CardColor.Red, Value = CardValue.Seven
+            },
+            new()
+            {
+                Color = CardColor.Red, Value = CardValue.Zero
+            },
+            new()
+            {
+                Color = CardColor.Red, Value = CardValue.DrawTwo
+            },
+            new()
+            {
+                Color = CardColor.Yellow, Value = CardValue.DrawFour
+            },
+            new()
+            {
+                Color = CardColor.Yellow, Value = CardValue.Skip
+            },
+            new()
+            {
+                Color = CardColor.Yellow, Value = CardValue.Reverse
+            },
+            new()
+            {
+                Color = CardColor.Yellow, Value = CardValue.DiscardAll
+            },
+            new()
+            {
+                Color = CardColor.Yellow, Value = CardValue.SkipEveryone
+            }
+        ];
+        foreach (Card specialCard in specialCards)
+        {
+            AssertPlay(specialCard);
+        }
+    }
+
+    [Test]
+    private void PlayWildCards()
+    {
+        Card[] wildCards =
+        [
+            new()
+            {
+                Color = CardColor.Wild, Value = CardValue.ReverseDrawFour
+            },
+            new()
+            {
+                Color = CardColor.Wild, Value = CardValue.DrawSix
+            },
+            new()
+            {
+                Color = CardColor.Wild, Value = CardValue.DrawTen
+            },
+            new()
+            {
+                Color = CardColor.Wild, Value = CardValue.ColorRoulette
+            }
+        ];
+
+        foreach (Card wildCard in wildCards)
+        {
+            AssertPlay(wildCard);
+        }
     }
 
     private void AssertPlay(Card card)
