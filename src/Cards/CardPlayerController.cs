@@ -18,16 +18,7 @@ public class CardPlayerController
 
     public bool IsPlayable(Card card)
     {
-        Card topCard = _discardPile.TopCard;
-
-        if (topCard.Color is CardColor.Wild || card.Color is CardColor.Wild)
-            return true;
-        if (topCard.Color == card.Color)
-            return true;
-        if (topCard.Value == card.Value)
-            return true;
-        if (topCard.Value is CardValue.DrawTwo or CardValue.DrawFour)
-            return card.Value is CardValue.DrawFour or CardValue.DrawTwo;
-        return false;
+        PlayableCardValidator playableCardValidator = new PlayableCardValidator(_discardPile.TopCard);
+        return playableCardValidator.IsPlayable(card);
     }
 }
