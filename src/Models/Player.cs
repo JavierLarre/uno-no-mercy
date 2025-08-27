@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnoNoMercy.Cards;
 
-namespace UnoNoMercy;
+namespace UnoNoMercy.Models;
 
 public class Player
 {
@@ -12,5 +10,10 @@ public class Player
     public Player(IEnumerable<Card> cards)
     {
         Hand = cards.ToList();
+    }
+    
+    public static Player GetPlayerWithCards(int handSize)
+    {
+        return new Player(Card.GetGreenEights(handSize));
     }
 }

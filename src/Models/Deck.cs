@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using UnoNoMercy.Cards;
 
-namespace UnoNoMercy.Cards;
+namespace UnoNoMercy.Models;
 
 public class Deck
 {
@@ -10,6 +11,9 @@ public class Deck
     {
         _cards = new Stack<Card>(cards);
     }
+    
+    public static Deck GetDeckWithCards(int cards) => 
+        new(Card.GetGreenEights(cards));
 
     public Card Draw()
     {

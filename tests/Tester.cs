@@ -1,4 +1,3 @@
-using System.Linq;
 using GD_NET_ScOUT;
 using Godot;
 using UnoNoMercy.Cards;
@@ -17,54 +16,14 @@ public partial class Tester : Node
     private GameController _controller;
     private GameModel _model;
     
-    private static Card GetGreenEight() =>
-        new()
-        {
-            Value = CardValue.Eight,
-            Color = CardColor.Green
-        };
-
-    private static Card[] GetGreenEights(int sequenceLength)
-    {
-        Card[] validCards = new Card[sequenceLength];
-        for (int i = 0; i < sequenceLength; i++)
-        {
-            validCards[i] = GetGreenEight();
-        }
-
-        return validCards;
-    }
-
-    private static Card GetBlueFour() =>
-        new()
-        {
-            Color = CardColor.Blue,
-            Value = CardValue.Four
-        };
-
-    private static Player GetNewPlayer(int handSize)
-    {
-        return new Player(GetGreenEights(handSize));
-    }
-
-    private static Deck GetNewDeck(int cards)
-    {
-        return new Deck(GetGreenEights(cards));
-    }
-
-    private static DiscardPile GetNewDiscardPile()
-    {
-        return new DiscardPile(GetGreenEight());
-    }
-
     [BeforeEach]
     private void InitializeAttributes()
     {
         const int cards = 3;
-        _card = GetGreenEight();
-        _discardPile = GetNewDiscardPile();
-        _deck = GetNewDeck(cards);
-        _player = GetNewPlayer(cards);
+        _card = Card.GetGreenEight();
+        _discardPile = DiscardPile.GetPileWithCard();
+        _deck = Deck.GetDeckWithCards(cards);
+        _player = Player.GetPlayerWithCards(cards);
         _model = new GameModel
         {
             Deck = _deck,
@@ -81,11 +40,11 @@ public partial class Tester : Node
         _discardPile = new DiscardPile(_card);
         AssertCardIsOnTopPile(_card);
         
-        _card = GetGreenEight();
+        _card = Card.GetGreenEight();
         _discardPile.TopCard = _card;
         AssertCardIsOnTopPile(_card);
         
-        _card = GetGreenEight();
+        _card = Card.GetGreenEight();
         AssertIsNotEqualToTopCard(_card);
     }
 
@@ -100,7 +59,7 @@ public partial class Tester : Node
     private void PlayValidSequenceTest()
     {
         const int sequenceLength = 3;
-        Card[] validCards = GetGreenEights(sequenceLength);
+        Card[] validCards = Card.GetGreenEights(sequenceLength);
 
         foreach (Card validCard in validCards) 
             AssertPlay(validCard);
@@ -109,7 +68,7 @@ public partial class Tester : Node
     [Test]
     private void IsCardPlayableTest()
     {
-        Card redNine = GetBlueFour();
+        Card redNine = Card.GetBlueFour();
         
         Assert.IsFalse(_controller.IsPlayable(redNine));
         Assert.IsTrue(_controller.IsPlayable(_card));
@@ -118,7 +77,7 @@ public partial class Tester : Node
     [Test]
     private void TryPlayInvalidCardTest()
     {
-        Card redNine = GetBlueFour();
+        Card redNine = Card.GetBlueFour();
         Assert.Throws<UnoNoMercyException>(() => _controller.Play(redNine));
         AssertIsNotEqualToTopCard(redNine);
     }
@@ -200,7 +159,7 @@ public partial class Tester : Node
     [Test]
     private void PlayerHandTest()
     {
-        Card blueFour = GetBlueFour();
+        Card blueFour = Card.GetBlueFour();
         Player player = new Player([blueFour]);
         Assert.IsTrue(player.Hand.Contains(blueFour));
     }
@@ -217,7 +176,7 @@ public partial class Tester : Node
     [Test]
     private void DrawTwoCardsTest()
     {
-        Card blueFour = GetBlueFour();
+        Card blueFour = Card.GetBlueFour();
         Deck deck = new Deck([_card, blueFour]);
         
         Assert.AreEqual(blueFour, deck.Draw());
@@ -227,7 +186,7 @@ public partial class Tester : Node
     [Test]
     private void DrawTooManyCardsTest()
     {
-        Deck deck = GetNewDeck(0);
+        Deck deck = Deck.GetDeckWithCards(0);
         Assert.Throws<DeckIsEmptyException>(() => deck.Draw());
     }
 

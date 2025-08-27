@@ -1,4 +1,7 @@
-namespace UnoNoMercy.Cards.CardEffects;
+using UnoNoMercy.Cards;
+using UnoNoMercy.Cards.CardEffects;
+
+namespace UnoNoMercy.Controllers.CardEffects;
 
 public class CardEffectFactory
 {

@@ -1,6 +1,6 @@
 using UnoNoMercy.Models;
 
-namespace UnoNoMercy.Cards.CardEffects;
+namespace UnoNoMercy.Controllers.CardEffects;
 
 public interface ICardEffect
 {
