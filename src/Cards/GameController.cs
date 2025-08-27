@@ -1,18 +1,15 @@
-using System.Collections.Generic;
-using System.Linq;
+using UnoNoMercy.Cards.CardEffects;
 
 namespace UnoNoMercy.Cards;
 
 public class GameController
 {
     private DiscardPile _discardPile;
-    private List<Player> _players;
-    private Deck _deck;
+    private GameModel _model;
 
     public GameController(GameModel model)
     {
-        _deck = model.Deck;
-        _players = model.Players.ToList();
+        _model = model;
         _discardPile = model.DiscardPile;
     }
 
@@ -20,22 +17,20 @@ public class GameController
     {
         if (!IsPlayable(card))
             throw new UnoNoMercyException();
-        if (card.Value is CardValue.DrawTwo)
-            DrawTwo();
-
+        ApplyEffect(card);
         _discardPile.TopCard = card;
     }
 
     public bool IsPlayable(Card card)
     {
-        var validator = new PlayableCardValidator(_discardPile.TopCard);
+        var validator = new PlayableCardValidator(_model);
         return validator.IsPlayable(card);
     }
 
-    private void DrawTwo()
+    private void ApplyEffect(Card card)
     {
-        Player player = _players.First();
-        player.Hand.Add(_deck.Draw());
-        player.Hand.Add(_deck.Draw());
+        var effectFactory = new CardEffectFactory();
+        ICardEffect effect = effectFactory.GetFrom(card.Value);
+        effect.ApplyEffect(_model);
     }
 }

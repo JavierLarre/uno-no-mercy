@@ -4,9 +4,10 @@ public class PlayableCardValidator
 {
     private Card _discardCard;
 
-    public PlayableCardValidator(Card card)
+    public PlayableCardValidator(GameModel model)
     {
-        _discardCard = card;
+        DiscardPile discardPile = model.DiscardPile;
+        _discardCard = discardPile.TopCard;
     }
     public bool IsPlayable(Card card)
     {
