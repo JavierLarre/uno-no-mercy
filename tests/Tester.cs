@@ -223,6 +223,13 @@ public partial class Tester : Node
     }
 
     [Test]
+    private void DrawTooManyCardsTest()
+    {
+        Deck deck = GetNewDeck(0);
+        Assert.Throws<DeckIsEmptyException>(() => deck.Draw());
+    }
+
+    [Test]
     private void DrawTwoEffectTest()
     {
         int oldHandSize = _player.Hand.Count;

@@ -11,5 +11,10 @@ public class Deck
         _cards = new Stack<Card>(cards);
     }
 
-    public Card Draw() => _cards.Pop();
+    public Card Draw()
+    {
+        if (_cards.Count == 0)
+            throw new DeckIsEmptyException();
+        return _cards.Pop();
+    }
 }
