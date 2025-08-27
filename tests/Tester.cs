@@ -10,14 +10,14 @@ public partial class Tester : Node
 {
     private Card _greenEight;
     private DiscardPile _discardPile;
-    private CardPlayerController _playController;
+    private GameController _playController;
 
     [BeforeEach]
     private void InitializeAttributes()
     {
         _greenEight = GetGreenEight();
         _discardPile = new DiscardPile(GetGreenEight());
-        _playController = new CardPlayerController(_discardPile);
+        _playController = new GameController(_discardPile);
 
     }
     private static Card GetGreenEight() =>
@@ -191,6 +191,26 @@ public partial class Tester : Node
         
         Assert.AreEqual(blueFour, deck.Draw());
         Assert.AreEqual(_greenEight, deck.Draw());
+    }
+
+    [Test]
+    private void DrawTwoEffectTest()
+    {
+        Player player = new Player(GetGreenEights(1));
+        GameModel model = new GameModel
+        {
+            Players =
+            [
+                new Player(GetGreenEights(3)),
+                player
+            ],
+            TurnDirection = TurnDirection.Right,
+            Deck = new Deck(GetGreenEights(3)),
+            DiscardPile = new DiscardPile(GetGreenEight())
+        };
+        GameController controller = new GameController(model);
+        controller.Play(new Card{ Color = CardColor.Green, Value = CardValue.DrawTwo});
+        Assert.AreEqual(player.Hand.Count, 3);
     }
 
     private void AssertPlay(Card card)

@@ -1,11 +1,16 @@
 namespace UnoNoMercy.Cards;
 
-public class CardPlayerController
+public class GameController
 {
     private DiscardPile _discardPile;
-    public CardPlayerController(DiscardPile discardPile)
+    public GameController(DiscardPile discardPile)
     {
         _discardPile = discardPile;
+    }
+
+    public GameController(GameModel model)
+    {
+        
     }
 
     public void Play(Card card)
