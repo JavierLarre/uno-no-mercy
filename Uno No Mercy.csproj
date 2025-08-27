@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>UnoNoMercy</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\Cards\" />
+  </ItemGroup>
 </Project>

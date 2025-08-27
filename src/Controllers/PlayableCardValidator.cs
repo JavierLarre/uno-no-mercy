@@ -1,3 +1,5 @@
+using UnoNoMercy.Models;
+
 namespace UnoNoMercy.Cards;
 
 public class PlayableCardValidator

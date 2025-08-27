@@ -1,6 +1,8 @@
+using UnoNoMercy.Cards;
 using UnoNoMercy.Cards.CardEffects;
+using UnoNoMercy.Models;
 
-namespace UnoNoMercy.Cards;
+namespace UnoNoMercy.Controllers;
 
 public class GameController
 {

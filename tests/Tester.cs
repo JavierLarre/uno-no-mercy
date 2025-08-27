@@ -2,6 +2,8 @@ using System.Linq;
 using GD_NET_ScOUT;
 using Godot;
 using UnoNoMercy.Cards;
+using UnoNoMercy.Controllers;
+using UnoNoMercy.Models;
 
 namespace UnoNoMercy.tests;
 

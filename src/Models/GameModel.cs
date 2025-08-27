@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnoNoMercy.Cards;
 
-namespace UnoNoMercy;
+namespace UnoNoMercy.Models;
 
 public class GameModel
 {
