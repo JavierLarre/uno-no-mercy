@@ -1,8 +1,10 @@
+using System;
 using GD_NET_ScOUT;
 using Godot;
 using UnoNoMercy.Cards;
 using UnoNoMercy.Controllers;
 using UnoNoMercy.Models;
+using Enumerable = System.Linq.Enumerable;
 
 namespace UnoNoMercy.tests;
 
@@ -161,7 +163,7 @@ public partial class Tester : Node
     {
         Card blueFour = Card.GetBlueFour();
         Player player = new Player([blueFour]);
-        Assert.IsTrue(player.Hand.Contains(blueFour));
+        Assert.IsTrue(Enumerable.Contains(player.Hand, blueFour));
     }
 
     [Test]
@@ -193,13 +195,22 @@ public partial class Tester : Node
     [Test]
     private void DrawTwoEffectTest()
     {
-        int oldHandSize = _player.Hand.Count;
+        int oldHandSize = _player.Hand.Length;
         Card drawTwoCard = new Card
         {
             Color = CardColor.Green, Value = CardValue.DrawTwo
         };
         _controller.Play(drawTwoCard);
-        Assert.AreEqual(_player.Hand.Count, oldHandSize + 2);
+        Assert.AreEqual(_player.Hand.Length, oldHandSize + 2);
+    }
+
+    [Test]
+    private void PlayerHandIsInmutableTest()
+    {
+        Card[] hand = _player.Hand;
+        Card oldCard = hand[0];
+        hand[0] = Card.GetGreenEight();
+        Assert.IsTrue(oldCard == _player.Hand[0]);
     }
 
     private void AssertPlay(Card card)

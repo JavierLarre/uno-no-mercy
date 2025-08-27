@@ -1,8 +1,7 @@
 using System.Linq;
-using UnoNoMercy.Controllers.CardEffects;
 using UnoNoMercy.Models;
 
-namespace UnoNoMercy.Cards.CardEffects;
+namespace UnoNoMercy.Controllers.CardEffects;
 
 public class DrawEffect: ICardEffect
 {
@@ -13,9 +12,8 @@ public class DrawEffect: ICardEffect
     public void ApplyEffect(GameModel model)
     {
         Player player = model.Players.First();
-        for (int i = 0; i < _drawTimes; i++)
-        {
-            player.Hand.Add(model.Deck.Draw());
-        }
+        Deck deck = model.Deck;
+        for (int i = 0; i < _drawTimes; i++) 
+            player.AddCardToHand(deck.Draw());
     }
 }
