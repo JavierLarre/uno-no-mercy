@@ -174,6 +174,25 @@ public partial class Tester : Node
         Assert.IsTrue(player.Hand.Contains(blueFour));
     }
 
+    [Test]
+    private void DrawCardFromDeckTest()
+    {
+        Deck deck = new Deck([_greenEight]);
+        
+        Card drawnCard = deck.Draw();
+        
+        Assert.AreEqual(_greenEight, drawnCard);
+    }
+    [Test]
+    private void DrawTwoCardsTest()
+    {
+        Card blueFour = GetRedNine();
+        Deck deck = new Deck([_greenEight, blueFour]);
+        
+        Assert.AreEqual(blueFour, deck.Draw());
+        Assert.AreEqual(_greenEight, deck.Draw());
+    }
+
     private void AssertPlay(Card card)
     {
         Assert.DoesNotThrow<UnoNoMercyException>(() => _playController.Play(card));

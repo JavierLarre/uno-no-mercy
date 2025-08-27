@@ -7,10 +7,10 @@ namespace UnoNoMercy;
 
 public class Player
 {
-    public Card[] Hand { get; private set; }
+    public IList<Card> Hand { get; private set; }
 
     public Player(IEnumerable<Card> cards)
     {
-        Hand = cards.ToArray();
+        Hand = cards.ToList();
     }
 }
