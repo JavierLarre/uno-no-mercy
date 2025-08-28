@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnoNoMercy.Cards;
 using UnoNoMercy.Cards.CardEffects;
 using UnoNoMercy.Controllers.CardEffects;
@@ -22,6 +24,7 @@ public class GameController
             throw new UnoNoMercyException();
         ApplyEffect(card);
         _discardPile.TopCard = card;
+        PassTurn();
     }
 
     public bool IsPlayable(Card card)
@@ -35,5 +38,13 @@ public class GameController
         var effectFactory = new CardEffectFactory();
         ICardEffect effect = effectFactory.GetFrom(card.Value);
         effect.ApplyEffect(_model);
+    }
+
+    private void PassTurn()
+    {
+        Hand[] players = _model.Players.ToArray();
+        int currentPlayerIndex = Array.IndexOf(players, _model.PlayerInTurn);
+        int nextPlayerIndex = (currentPlayerIndex + 1) % players.Length;
+        _model.PlayerInTurn = players[nextPlayerIndex];
     }
 }

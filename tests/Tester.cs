@@ -31,7 +31,8 @@ public partial class Tester : Node
             Deck = _deck,
             DiscardPile = _discardPile,
             Players = [_hand],
-            TurnDirection = TurnDirection.Right
+            TurnDirection = TurnDirection.Right,
+            PlayerInTurn = _hand
         };
         _controller = new GameController(_model);
     }
@@ -202,6 +203,19 @@ public partial class Tester : Node
         };
         _controller.Play(drawTwoCard);
         Assert.AreEqual(_hand.Cards.Length, oldHandSize + 2);
+    }
+
+    [Test]
+    private void NextTurnTest()
+    {
+        Hand handWithCards = Hand.GetHandWithCards(2);
+        _model.Players = [handWithCards, _hand];
+        _model.PlayerInTurn = handWithCards;
+        _controller = new GameController(_model);
+        
+        _controller.Play(Card.GetGreenEight());
+        
+        Assert.AreEqual(_model.PlayerInTurn, _hand);
     }
 
     [Test]

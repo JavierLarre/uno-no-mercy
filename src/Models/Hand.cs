@@ -20,4 +20,9 @@ public class Hand
     {
         return new Hand(Card.GetGreenEights(handSize));
     }
+
+    public override string ToString()
+    {
+        return $"[{string.Join(", ", _cards)}]";
+    }
 }

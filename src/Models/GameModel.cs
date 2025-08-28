@@ -9,4 +9,5 @@ public class GameModel
     public TurnDirection TurnDirection { get; set; }
     public Deck Deck { get; set; }
     public DiscardPile DiscardPile { get; set; }
+    public Hand PlayerInTurn { get; set; }
 }
