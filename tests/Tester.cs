@@ -14,7 +14,7 @@ public partial class Tester : Node
     private Card _card;
     private DiscardPile _discardPile;
     private Deck _deck;
-    private Player _player;
+    private Hand _hand;
     private GameController _controller;
     private GameModel _model;
     
@@ -25,12 +25,12 @@ public partial class Tester : Node
         _card = Card.GetGreenEight();
         _discardPile = DiscardPile.GetPileWithCard();
         _deck = Deck.GetDeckWithCards(cards);
-        _player = Player.GetPlayerWithCards(cards);
+        _hand = Hand.GetHandWithCards(cards);
         _model = new GameModel
         {
             Deck = _deck,
             DiscardPile = _discardPile,
-            Players = [_player],
+            Players = [_hand],
             TurnDirection = TurnDirection.Right
         };
         _controller = new GameController(_model);
@@ -162,8 +162,8 @@ public partial class Tester : Node
     private void PlayerHandTest()
     {
         Card blueFour = Card.GetBlueFour();
-        Player player = new Player([blueFour]);
-        Assert.IsTrue(Enumerable.Contains(player.Hand, blueFour));
+        Hand hand = new Hand([blueFour]);
+        Assert.IsTrue(Enumerable.Contains(hand.Cards, blueFour));
     }
 
     [Test]
@@ -195,22 +195,22 @@ public partial class Tester : Node
     [Test]
     private void DrawTwoEffectTest()
     {
-        int oldHandSize = _player.Hand.Length;
+        int oldHandSize = _hand.Cards.Length;
         Card drawTwoCard = new Card
         {
             Color = CardColor.Green, Value = CardValue.DrawTwo
         };
         _controller.Play(drawTwoCard);
-        Assert.AreEqual(_player.Hand.Length, oldHandSize + 2);
+        Assert.AreEqual(_hand.Cards.Length, oldHandSize + 2);
     }
 
     [Test]
     private void PlayerHandIsInmutableTest()
     {
-        Card[] hand = _player.Hand;
+        Card[] hand = _hand.Cards;
         Card oldCard = hand[0];
         hand[0] = Card.GetGreenEight();
-        Assert.IsTrue(oldCard == _player.Hand[0]);
+        Assert.IsTrue(oldCard == _hand.Cards[0]);
     }
 
     private void AssertPlay(Card card)

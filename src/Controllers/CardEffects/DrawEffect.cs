@@ -11,9 +11,9 @@ public class DrawEffect: ICardEffect
     
     public void ApplyEffect(GameModel model)
     {
-        Player player = model.Players.First();
+        Hand hand = model.Players.First();
         Deck deck = model.Deck;
         for (int i = 0; i < _drawTimes; i++) 
-            player.AddCardToHand(deck.Draw());
+            hand.AddCard(deck.Draw());
     }
 }
