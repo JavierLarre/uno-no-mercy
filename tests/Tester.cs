@@ -224,7 +224,21 @@ public partial class Tester : Node
         Card[] hand = _hand.Cards;
         Card oldCard = hand[0];
         hand[0] = Card.GetGreenEight();
-        Assert.IsTrue(oldCard == _hand.Cards[0]);
+        Assert.AreEqual(oldCard, _hand.Cards[0]);
+    }
+
+    [Test]
+    private void ApplyDrawTwoAndPassTurn()
+    {
+        Hand otherHand = Hand.GetHandWithCards(3);
+        int oldSize = otherHand.Cards.Length;
+        _model.Players.Add(otherHand);
+
+        _controller = new GameController(_model);
+        _controller.Play(new Card{ Value = CardValue.DrawTwo, Color = CardColor.Green});
+        
+        Assert.AreEqual(otherHand.Cards.Length, oldSize + 2);
+        Assert.AreEqual(_model.PlayerInTurn, _hand);
     }
 
     private void AssertPlay(Card card)
