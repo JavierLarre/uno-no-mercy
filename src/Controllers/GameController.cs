@@ -42,9 +42,7 @@ public class GameController
 
     private void PassTurn()
     {
-        Hand[] players = _model.Players.ToArray();
-        int currentPlayerIndex = Array.IndexOf(players, _model.PlayerInTurn);
-        int nextPlayerIndex = (currentPlayerIndex + 1) % players.Length;
-        _model.PlayerInTurn = players[nextPlayerIndex];
+        var turnController = new TurnController(_model);
+        turnController.PassTurn();
     }
 }

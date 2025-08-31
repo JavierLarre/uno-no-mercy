@@ -11,9 +11,11 @@ public class DrawEffect: ICardEffect
     
     public void ApplyEffect(GameModel model)
     {
-        Hand hand = model.Players.First();
+        var turnController = new TurnController(model);
+        Hand hand = turnController.GetNextPlayer();
         Deck deck = model.Deck;
         for (int i = 0; i < _drawTimes; i++) 
             hand.AddCard(deck.Draw());
+        turnController.PassTurn();
     }
 }
