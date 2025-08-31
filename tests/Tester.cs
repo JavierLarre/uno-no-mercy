@@ -233,12 +233,9 @@ public partial class Tester : Node
         Hand otherHand = Hand.GetHandWithCards(3);
         int oldSize = otherHand.Cards.Length;
         _model.Players.Add(otherHand);
-
         _controller = new GameController(_model);
-        Card drawTwo = new Card
-        {
-            Value = CardValue.DrawTwo, Color = CardColor.Green
-        };
+        Card drawTwo = Card.GetDrawTwo(CardColor.Green);
+        
         _controller.Play(drawTwo);
         
         Assert.AreEqual(otherHand.Cards.Length, oldSize + 2);

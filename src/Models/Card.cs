@@ -31,6 +31,13 @@ public class Card
 
         return validCards;
     }
+
+    public static Card GetDrawTwo(CardColor color) =>
+        new()
+        {
+            Value = CardValue.DrawTwo,
+            Color = color
+        };
     
     public override string ToString()
     {
