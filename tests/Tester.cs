@@ -241,7 +241,7 @@ public partial class Tester : Node
         Assert.AreEqual(otherHand.Cards.Length, oldSize + 2);
         Assert.AreEqual(_model.PlayerInTurn, _hand);
     }
-
+    
     private void AssertPlay(Card card)
     {
         Assert.DoesNotThrow<UnoNoMercyException>(() => _controller.Play(card));
