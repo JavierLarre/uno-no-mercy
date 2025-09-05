@@ -7,7 +7,7 @@ public class GameModel
 {
     public IList<Hand> Players { get; set; }
     public TurnDirection TurnDirection { get; set; }
-    public Deck Deck { get; set; }
-    public DiscardPile DiscardPile { get; set; }
+    public Deck Deck { get; init; }
+    public DiscardPile DiscardPile { get; init; }
     public Hand PlayerInTurn { get; set; }
 }
