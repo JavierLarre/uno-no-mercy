@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj4sgyrq21fqt"]
+
+[ext_resource type="Script" uid="uid://dr6ti5jf162j7" path="res://src/Views/CardBox.cs" id="1_b82vw"]
+[ext_resource type="Script" uid="uid://d2mipc5ntogvs" path="res://src/Views/Ui.cs" id="1_xdnu0"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xdnu0")
+
+[node name="CardBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.707
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -148.136
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("1_b82vw")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 460.0
+offset_top = 515.0
+offset_right = -473.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "jugar"

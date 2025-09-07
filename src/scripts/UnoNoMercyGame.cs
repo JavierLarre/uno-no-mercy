@@ -2,10 +2,11 @@ using Godot;
 using UnoNoMercy.Cards;
 using UnoNoMercy.Controllers;
 using UnoNoMercy.Models;
+using UnoNoMercy.Views;
 
 namespace UnoNoMercy.scripts;
 
-public partial class UnoNoMercyGame : Control
+public partial class UnoNoMercyGame : Node
 {
     [Export] 
     public CardColor InitialColor { get; set; } = CardColor.Green;
@@ -31,6 +32,8 @@ public partial class UnoNoMercyGame : Control
             Players = [hand],
             TurnDirection = TurnDirection.Right
         };
+        Ui ui = GetChild<Ui>(0);
         GameController controller = new GameController(model);
+        controller.Start(ui);
     }
 }

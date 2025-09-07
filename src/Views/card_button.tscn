@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://comc1j5613kee"]
+
+[ext_resource type="Script" uid="uid://sa0ej7skng4f" path="res://src/Views/CardButton.cs" id="1_74jl2"]
+
+[node name="CardButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_74jl2")

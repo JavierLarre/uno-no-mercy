@@ -4,6 +4,7 @@ using UnoNoMercy.Cards;
 using UnoNoMercy.Cards.CardEffects;
 using UnoNoMercy.Controllers.CardEffects;
 using UnoNoMercy.Models;
+using UnoNoMercy.Views;
 
 namespace UnoNoMercy.Controllers;
 
@@ -11,11 +12,19 @@ public class GameController
 {
     private DiscardPile _discardPile;
     private GameModel _model;
+    private IView _view;
 
     public GameController(GameModel model)
     {
         _model = model;
         _discardPile = model.DiscardPile;
+    }
+
+    public void Start(IView view)
+    {
+        _view = view;
+        _view.SetModel(_model);
+        _view.Update();
     }
 
     public void Play(Card card)
@@ -25,6 +34,7 @@ public class GameController
         ApplyEffect(card);
         _discardPile.TopCard = card;
         PassTurn();
+        _view.Update();
     }
 
     public bool IsPlayable(Card card)

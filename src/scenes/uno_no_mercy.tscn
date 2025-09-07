@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://byw8fv1p6pio4"]
+[gd_scene load_steps=3 format=3 uid="uid://byw8fv1p6pio4"]
 
 [ext_resource type="Script" uid="uid://ch8adfalym5wj" path="res://src/scripts/UnoNoMercyGame.cs" id="1_63bk8"]
+[ext_resource type="PackedScene" uid="uid://bj4sgyrq21fqt" path="res://src/Views/ui.tscn" id="2_a0ct0"]
 
 [node name="UnoNoMercy" type="Node"]
 script = ExtResource("1_63bk8")
+
+[node name="UI" parent="." instance=ExtResource("2_a0ct0")]
