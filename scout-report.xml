@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="GD_NET_ScOUT" tests="15" failures="0" errors="0" skipped="0" time="0.468">
-  <testsuite name="tests.Tester.Tester" tests="15" failures="0" errors="0" skipped="0" time="0.468">
-    <testcase name="DiscardPileTest" classname="tests.Tester.Tester" time="0.013" />
-    <testcase name="PlayTest" classname="tests.Tester.Tester" time="0.024" />
-    <testcase name="PlayValidSequenceTest" classname="tests.Tester.Tester" time="0.018" />
-    <testcase name="IsCardPlayableTest" classname="tests.Tester.Tester" time="0.035" />
-    <testcase name="TryPlayInvalidCardTest" classname="tests.Tester.Tester" time="0.036" />
-    <testcase name="PlaySpecialCards" classname="tests.Tester.Tester" time="0.03" />
-    <testcase name="PlayWildCards" classname="tests.Tester.Tester" time="0.044" />
-    <testcase name="PlayerHandTest" classname="tests.Tester.Tester" time="0.026" />
-    <testcase name="DrawCardFromDeckTest" classname="tests.Tester.Tester" time="0.042" />
-    <testcase name="DrawTwoCardsTest" classname="tests.Tester.Tester" time="0.038" />
-    <testcase name="DrawTooManyCardsTest" classname="tests.Tester.Tester" time="0.036" />
-    <testcase name="DrawTwoEffectTest" classname="tests.Tester.Tester" time="0.019" />
-    <testcase name="NextTurnTest" classname="tests.Tester.Tester" time="0.033" />
-    <testcase name="PlayerHandIsInmutableTest" classname="tests.Tester.Tester" time="0.028" />
-    <testcase name="ApplyDrawTwoAndPassTurn" classname="tests.Tester.Tester" time="0.046" />
+<testsuites name="GD_NET_ScOUT" tests="15" failures="0" errors="0" skipped="0" time="0.494">
+  <testsuite name="tests.Tester.Tester" tests="15" failures="0" errors="0" skipped="0" time="0.494">
+    <testcase name="DiscardPileTest" classname="tests.Tester.Tester" time="0.018" />
+    <testcase name="PlayTest" classname="tests.Tester.Tester" time="0.016" />
+    <testcase name="PlayValidSequenceTest" classname="tests.Tester.Tester" time="0.038" />
+    <testcase name="IsCardPlayableTest" classname="tests.Tester.Tester" time="0.037" />
+    <testcase name="TryPlayInvalidCardTest" classname="tests.Tester.Tester" time="0.038" />
+    <testcase name="PlaySpecialCards" classname="tests.Tester.Tester" time="0.028" />
+    <testcase name="PlayWildCards" classname="tests.Tester.Tester" time="0.029" />
+    <testcase name="PlayerHandTest" classname="tests.Tester.Tester" time="0.036" />
+    <testcase name="DrawCardFromDeckTest" classname="tests.Tester.Tester" time="0.032" />
+    <testcase name="DrawTwoCardsTest" classname="tests.Tester.Tester" time="0.033" />
+    <testcase name="DrawTooManyCardsTest" classname="tests.Tester.Tester" time="0.035" />
+    <testcase name="DrawTwoEffectTest" classname="tests.Tester.Tester" time="0.033" />
+    <testcase name="NextTurnTest" classname="tests.Tester.Tester" time="0.032" />
+    <testcase name="PlayerHandIsInmutableTest" classname="tests.Tester.Tester" time="0.059" />
+    <testcase name="ApplyDrawTwoAndPassTurn" classname="tests.Tester.Tester" time="0.03" />
   </testsuite>
 </testsuites>

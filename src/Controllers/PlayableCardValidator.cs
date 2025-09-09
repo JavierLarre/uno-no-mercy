@@ -1,6 +1,9 @@
+using UnoNoMercy.Cards;
+using UnoNoMercy.Entities.Card;
+using UnoNoMercy.Entities.DiscardPile;
 using UnoNoMercy.Models;
 
-namespace UnoNoMercy.Cards;
+namespace UnoNoMercy.Controllers;
 
 public class PlayableCardValidator
 {
@@ -8,8 +11,8 @@ public class PlayableCardValidator
 
     public PlayableCardValidator(GameModel model)
     {
-        DiscardPile discardPile = model.DiscardPile;
-        _discardCard = discardPile.TopCard;
+        StackedDiscardPile stackedDiscardPile = model.StackedDiscardPile;
+        _discardCard = stackedDiscardPile.TopCard;
     }
     public bool IsPlayable(Card card)
     {

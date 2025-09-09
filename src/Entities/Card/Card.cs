@@ -1,6 +1,5 @@
-using UnoNoMercy.Cards;
 
-namespace UnoNoMercy.Models;
+namespace UnoNoMercy.Entities.Card;
 
 public class Card
 {

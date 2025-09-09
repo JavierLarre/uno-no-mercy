@@ -1,23 +1,21 @@
-using System;
-using System.Linq;
 using UnoNoMercy.Cards;
-using UnoNoMercy.Cards.CardEffects;
 using UnoNoMercy.Controllers.CardEffects;
+using UnoNoMercy.Entities.Card;
+using UnoNoMercy.Entities.DiscardPile;
 using UnoNoMercy.Models;
-using UnoNoMercy.Views;
 
 namespace UnoNoMercy.Controllers;
 
-public class GameController
+public class CardController
 {
-    private DiscardPile _discardPile;
+    private StackedDiscardPile _stackedDiscardPile;
     private GameModel _model;
     private IView _view;
 
-    public GameController(GameModel model)
+    public CardController(GameModel model)
     {
         _model = model;
-        _discardPile = model.DiscardPile;
+        _stackedDiscardPile = model.StackedDiscardPile;
     }
 
     public void Start(IView view)
@@ -32,9 +30,8 @@ public class GameController
         if (!IsPlayable(card))
             throw new UnoNoMercyException();
         ApplyEffect(card);
-        _discardPile.TopCard = card;
+        _stackedDiscardPile.TopCard = card;
         PassTurn();
-        _view.Update();
     }
 
     public bool IsPlayable(Card card)
@@ -49,7 +46,7 @@ public class GameController
         ICardEffect effect = effectFactory.GetFrom(card.Value);
         effect.ApplyEffect(_model);
     }
-
+    
     private void PassTurn()
     {
         var turnController = new TurnController(_model);

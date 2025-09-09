@@ -1,4 +1,5 @@
 using Godot;
+using UnoNoMercy.Entities.Card;
 using UnoNoMercy.Models;
 
 public partial class CardButton : Button

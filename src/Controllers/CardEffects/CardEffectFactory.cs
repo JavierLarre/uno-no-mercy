@@ -1,5 +1,6 @@
 using UnoNoMercy.Cards;
 using UnoNoMercy.Cards.CardEffects;
+using UnoNoMercy.Entities.Card;
 
 namespace UnoNoMercy.Controllers.CardEffects;
 

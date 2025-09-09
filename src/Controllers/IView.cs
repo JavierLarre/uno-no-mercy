@@ -1,6 +1,6 @@
 using UnoNoMercy.Models;
 
-namespace UnoNoMercy.Views;
+namespace UnoNoMercy.Controllers;
 
 public interface IView
 {

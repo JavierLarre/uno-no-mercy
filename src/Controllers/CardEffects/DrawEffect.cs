@@ -13,9 +13,9 @@ public class DrawEffect: ICardEffect
     {
         var turnController = new TurnController(model);
         Hand hand = turnController.GetNextPlayer();
-        Deck deck = model.Deck;
+        StackedDeck stackedDeck = model.StackedDeck;
         for (int i = 0; i < _drawTimes; i++) 
-            hand.AddCard(deck.Draw());
+            hand.AddCard(stackedDeck.Draw());
         turnController.PassTurn();
     }
 }

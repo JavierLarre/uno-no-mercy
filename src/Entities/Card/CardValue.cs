@@ -1,4 +1,4 @@
-namespace UnoNoMercy.Cards;
+namespace UnoNoMercy.Entities.Card;
 
 public enum CardValue
 {

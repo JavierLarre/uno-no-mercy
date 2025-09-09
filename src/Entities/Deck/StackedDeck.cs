@@ -1,18 +1,19 @@
 using System.Collections.Generic;
 using UnoNoMercy.Cards;
+using UnoNoMercy.Entities.Card;
 
 namespace UnoNoMercy.Models;
 
-public class Deck
+public class StackedDeck
 {
     private Stack<Card> _cards;
 
-    public Deck(IEnumerable<Card> cards)
+    public StackedDeck(IEnumerable<Card> cards)
     {
         _cards = new Stack<Card>(cards);
     }
     
-    public static Deck GetDeckWithCards(int cards) => 
+    public static StackedDeck GetDeckWithCards(int cards) => 
         new(Card.GetGreenEights(cards));
 
     public Card Draw()

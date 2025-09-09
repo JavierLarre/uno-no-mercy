@@ -1,6 +1,8 @@
 using Godot;
 using UnoNoMercy.Cards;
 using UnoNoMercy.Controllers;
+using UnoNoMercy.Entities.Card;
+using UnoNoMercy.Entities.DiscardPile;
 using UnoNoMercy.Models;
 using UnoNoMercy.Views;
 
@@ -26,14 +28,14 @@ public partial class UnoNoMercyGame : Node
         Hand hand = Hand.GetHandWithCards(7);
         GameModel model = new GameModel
         {
-            Deck = Deck.GetDeckWithCards(100),
-            DiscardPile = new DiscardPile(initialCard),
+            StackedDeck = StackedDeck.GetDeckWithCards(100),
+            StackedDiscardPile = new StackedDiscardPile(initialCard),
             PlayerInTurn = hand,
             Players = [hand],
             TurnDirection = TurnDirection.Right
         };
         Ui ui = GetChild<Ui>(0);
-        GameController controller = new GameController(model);
+        CardController controller = new CardController(model);
         controller.Start(ui);
     }
 }

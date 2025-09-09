@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3poxyhwrojfm"]
+[gd_scene load_steps=3 format=3 uid="uid://b3poxyhwrojfm"]
 
 [ext_resource type="Script" uid="uid://dqmkkn6qx42p6" path="res://tests/Tester.cs" id="1_8cefx"]
 [ext_resource type="PackedScene" uid="uid://ce83kbl7xjwpr" path="res://addons/GD_NET_ScOUT/test_runner.tscn" id="1_dydni"]
-[ext_resource type="Script" uid="uid://b4i502est78rf" path="res://tests/ViewTest.cs" id="3_tex3u"]
 
 [node name="Tester" type="Node"]
 script = ExtResource("1_8cefx")
 
 [node name="TestRunner" parent="." instance=ExtResource("1_dydni")]
-
-[node name="ViewTest" type="Node" parent="."]
-script = ExtResource("3_tex3u")
