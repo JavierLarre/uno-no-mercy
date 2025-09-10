@@ -19,29 +19,27 @@ public partial class CardButton : Button
     private Card _card;
     private Vector2 _originalPosition;
 
-    public CardButton()
+    public override void _Pressed()
     {
-        ToggleMode = true;
-    }
-
-    public override void _Toggled(bool toggledOn)
-    {
-        IsSelected = toggledOn;
-        if (toggledOn)
+        IsSelected = !IsSelected;
+        if (IsSelected)
             MoveUp();
         else
             MoveBackDown();
     }
 
-    private void MoveBackDown()
+    public void MoveBackDown()
     {
         Position = _originalPosition;
+        IsSelected = false;
     }
 
     private void MoveUp()
     {
-        _originalPosition = Position;
         const float offset = 10;
-        Position = _originalPosition with { Y = _originalPosition.Y - offset };
+        _originalPosition = Position;
+        Vector2 newPosition = _originalPosition;
+        newPosition.Y = _originalPosition.Y - offset;
+        Position = newPosition;
     }
 }

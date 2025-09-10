@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 using UnoNoMercy.Entities.Card;
 using UnoNoMercy.Models;
@@ -24,13 +23,13 @@ public partial class CardBox : HBoxContainer
     private void AddCardToBox(Card card)
     {
         CardButton cardButton = new CardButton { Card = card };
-        cardButton.Toggled += OnToggledCard;
+        cardButton.Pressed += OnToggledCard;
 
         _buttons.Add(cardButton);
         AddChild(cardButton);
         return;
 
-        void OnToggledCard(bool toggledOn)
+        void OnToggledCard()
         {
             SelectedCard = cardButton.Card;
             DeselectCards(cardButton);
@@ -42,7 +41,7 @@ public partial class CardBox : HBoxContainer
         foreach (CardButton button in _buttons)
         {
             if (button != selectedCard && button.IsSelected)
-                button._Toggled(false);
+                button.MoveBackDown();
         }
     }
 }
