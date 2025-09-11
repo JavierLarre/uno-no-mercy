@@ -18,13 +18,20 @@ public partial class UnoNoMercyGame : Node
 
     [Export] 
     public TurnDirection InitialDirection { get; set; } = TurnDirection.Right;
+
+    private NodePath _uiPath = new("UI");
     
     public override void _Ready()
     {
-        Card initialCard = new Card
-        {
-            Color = InitialColor, Value = InitialValue
-        };
+        var model = GetModel();
+        var ui = GetUi();
+        CardController controller = new CardController(model);
+        controller.Start(ui);
+    }
+
+    private GameModel GetModel()
+    {
+        var initialCard = GetInitialCard();
         Hand hand = Hand.GetHandWithCards(7);
         GameModel model = new GameModel
         {
@@ -34,8 +41,21 @@ public partial class UnoNoMercyGame : Node
             Players = [hand],
             TurnDirection = TurnDirection.Right
         };
-        Ui ui = GetChild<Ui>(0);
-        CardController controller = new CardController(model);
-        controller.Start(ui);
+        return model;
+    }
+
+    private Ui GetUi()
+    {
+        Ui ui = GetNode<Ui>(_uiPath);
+        return ui;
+    }
+
+    private Card GetInitialCard()
+    {
+        Card initialCard = new Card
+        {
+            Color = InitialColor, Value = InitialValue
+        };
+        return initialCard;
     }
 }
