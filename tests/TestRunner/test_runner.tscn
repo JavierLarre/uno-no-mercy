@@ -6,4 +6,4 @@
 script = ExtResource("1_ohp16")
 Scenes = []
 TestSceneDirectories = PackedStringArray("res://tests/")
-TestReportPath = "res://scout-report.xml"
+TestReportPath = "/home/zabieru/uno-no-mercy/tests/reports/scout-report.xml"

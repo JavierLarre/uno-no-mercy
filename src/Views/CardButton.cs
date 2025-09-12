@@ -1,5 +1,5 @@
 using Godot;
-using UnoNoMercy.Entities.Card;
+using UnoNoMercy.Entities.Cards;
 
 namespace UnoNoMercy.Views;
 

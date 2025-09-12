@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnoNoMercy.Entities.Card;
+using UnoNoMercy.Entities.Cards;
 
 namespace UnoNoMercy.Models;
 

@@ -1,5 +1,5 @@
 using UnoNoMercy.Cards;
-using UnoNoMercy.Entities.Card;
+using UnoNoMercy.Entities.Cards;
 using UnoNoMercy.Entities.DiscardPile;
 using UnoNoMercy.Models;
 

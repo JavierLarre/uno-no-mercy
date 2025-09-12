@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnoNoMercy.Cards;
+using UnoNoMercy.Entities.Deck;
 using UnoNoMercy.Entities.DiscardPile;
 
 namespace UnoNoMercy.Models;

@@ -1,7 +1,8 @@
 using Godot;
 using UnoNoMercy.Cards;
 using UnoNoMercy.Controllers;
-using UnoNoMercy.Entities.Card;
+using UnoNoMercy.Entities.Cards;
+using UnoNoMercy.Entities.Deck;
 using UnoNoMercy.Entities.DiscardPile;
 using UnoNoMercy.Models;
 using UnoNoMercy.Views;

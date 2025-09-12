@@ -1,24 +1,24 @@
 using System.Collections.Generic;
-using UnoNoMercy.Models;
+using UnoNoMercy.Entities.Cards;
 
 namespace UnoNoMercy.Entities.DiscardPile;
 
 public class StackedDiscardPile
 {
-    public Card.Card TopCard
+    public Card TopCard
     {
         get => _cards.Peek();
         set => _cards.Push(value);
     }
 
-    private Stack<Card.Card> _cards;
+    private Stack<Card> _cards;
 
-    public StackedDiscardPile(Card.Card firstCard)
+    public StackedDiscardPile(Card firstCard)
     {
-        _cards = new Stack<Card.Card>();
+        _cards = new Stack<Card>();
         _cards.Push(firstCard);
     }
 
     public static StackedDiscardPile GetPileWithCard() =>
-        new(Card.Card.GetGreenEight());
+        new(Card.GetGreenEight());
 }

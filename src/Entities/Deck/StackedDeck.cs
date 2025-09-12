@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnoNoMercy.Cards;
-using UnoNoMercy.Entities.Card;
+using UnoNoMercy.Entities.Cards;
 
-namespace UnoNoMercy.Models;
+namespace UnoNoMercy.Entities.Deck;
 
-public class StackedDeck
+public class StackedDeck: Deck
 {
     private Stack<Card> _cards;
 

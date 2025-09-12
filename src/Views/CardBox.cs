@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Godot;
-using UnoNoMercy.Entities.Card;
+using UnoNoMercy.Entities.Cards;
 using UnoNoMercy.Models;
 
 namespace UnoNoMercy.Views;

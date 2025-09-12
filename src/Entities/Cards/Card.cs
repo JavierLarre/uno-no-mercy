@@ -1,5 +1,5 @@
 
-namespace UnoNoMercy.Entities.Card;
+namespace UnoNoMercy.Entities.Cards;
 
 public class Card
 {
