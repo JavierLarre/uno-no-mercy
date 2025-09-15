@@ -30,16 +30,16 @@ public partial class UnoNoMercyGame : Node
         controller.Start(ui);
     }
 
-    private GameModel GetModel()
+    private StackedGameModel GetModel()
     {
         var initialCard = GetInitialCard();
         Hand hand = Hand.GetHandWithCards(7);
-        GameModel model = new GameModel
+        StackedGameModel model = new StackedGameModel
         {
-            StackedDeck = StackedDeck.GetDeckWithCards(100),
-            StackedDiscardPile = new StackedDiscardPile(initialCard),
+            Deck = StackedDeck.GetDeckWithCards(100),
+            DiscardPile = new StackedDiscardPile(initialCard),
             PlayerInTurn = hand,
-            Players = [hand],
+            PlayerList = [hand],
             TurnDirection = TurnDirection.Right
         };
         return model;

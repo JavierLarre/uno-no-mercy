@@ -1,34 +1,33 @@
 using System;
 using System.Linq;
+using UnoNoMercy.Entities.Player;
 using UnoNoMercy.Models;
 
 namespace UnoNoMercy.Controllers;
 
 public class TurnController
 {
-    private GameModel _model;
-    private Hand[] _players;
+    private Players _players;
 
     public TurnController(GameModel model)
     {
-        _model = model;
-        _players = _model.Players.ToArray();
+        _players = model.Players;
     }
 
     public void PassTurn()
     {
-        _model.PlayerInTurn = GetNextPlayer();
+        _players.CurrentPlayerHand = GetNextPlayer();
     }
 
     public Hand GetNextPlayer()
     {
         int nextPlayerIndex = GetNextPlayerIndex();
-        return _players[nextPlayerIndex];
+        return _players.PlayersArray[nextPlayerIndex];
     }
 
     private int GetNextPlayerIndex()
     {
-        if (_model.TurnDirection is TurnDirection.Right)
+        if (_players.TurnDirection is TurnDirection.Right)
             return GetRightPlayerIndex();
         return GetLeftPlayerIndex();
     }
@@ -42,9 +41,10 @@ public class TurnController
     private int GetRightPlayerIndex()
     {
         int currentPlayerIndex = GetPlayerInTurnIndex();
-        return (currentPlayerIndex + 1) % _players.Length;
+        int playerAmount = _players.PlayersArray.Length;
+        return (currentPlayerIndex + 1) % playerAmount;
     }
 
     private int GetPlayerInTurnIndex() => 
-        Array.IndexOf(_players, _model.PlayerInTurn);
+        Array.IndexOf(_players.PlayersArray, _players.CurrentPlayerHand);
 }

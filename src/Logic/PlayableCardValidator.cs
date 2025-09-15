@@ -11,8 +11,8 @@ public class PlayableCardValidator
 
     public PlayableCardValidator(GameModel model)
     {
-        StackedDiscardPile stackedDiscardPile = model.StackedDiscardPile;
-        _discardCard = stackedDiscardPile.TopCard;
+        DiscardPile discardPile = model.DiscardPile;
+        _discardCard = discardPile.TopCard;
     }
     public bool IsPlayable(Card card)
     {

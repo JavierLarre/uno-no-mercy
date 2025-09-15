@@ -13,14 +13,13 @@ public class Hand
     {
         _cards = cards.ToList();
     }
-    
-
-    public void AddCard(Card card) => _cards.Add(card);
 
     public static Hand GetHandWithCards(int handSize)
     {
         return new Hand(Card.GetGreenEights(handSize));
     }
+
+    public void AddCard(Card card) => _cards.Add(card);
 
     public override string ToString()
     {

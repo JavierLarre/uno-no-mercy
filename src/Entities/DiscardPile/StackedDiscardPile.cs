@@ -3,7 +3,7 @@ using UnoNoMercy.Entities.Cards;
 
 namespace UnoNoMercy.Entities.DiscardPile;
 
-public class StackedDiscardPile
+public class StackedDiscardPile: DiscardPile
 {
     public Card TopCard
     {

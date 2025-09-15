@@ -8,14 +8,14 @@ namespace UnoNoMercy.Controllers;
 
 public class CardController
 {
-    private StackedDiscardPile _stackedDiscardPile;
+    private DiscardPile _discardPile;
     private GameModel _model;
     private IView _view;
 
     public CardController(GameModel model)
     {
         _model = model;
-        _stackedDiscardPile = model.StackedDiscardPile;
+        _discardPile = model.DiscardPile;
     }
 
     public void Start(IView view)
@@ -30,7 +30,7 @@ public class CardController
         if (!IsPlayable(card))
             throw new UnoNoMercyException();
         ApplyEffect(card);
-        _stackedDiscardPile.TopCard = card;
+        _discardPile.TopCard = card;
         PassTurn();
     }
 

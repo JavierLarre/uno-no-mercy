@@ -15,7 +15,7 @@ public partial class CardBox : HBoxContainer
 
     public void Update()
     {
-        IEnumerable<Card> cards = _model.PlayerInTurn.Cards;
+        IEnumerable<Card> cards = _model.Players.CurrentPlayerHand.Cards;
         foreach (Card card in cards) 
             AddCardToBox(card);
     }
