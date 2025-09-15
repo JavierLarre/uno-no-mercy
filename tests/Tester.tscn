@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3poxyhwrojfm"]
+[gd_scene load_steps=6 format=3 uid="uid://b3poxyhwrojfm"]
 
-[ext_resource type="Script" uid="uid://dqmkkn6qx42p6" path="res://tests/Tester.cs" id="1_8cefx"]
+[ext_resource type="Script" uid="uid://dqmkkn6qx42p6" path="res://tests/ControllerTester.cs" id="1_8cefx"]
 [ext_resource type="PackedScene" uid="uid://ce83kbl7xjwpr" path="res://addons/GD_NET_ScOUT/test_runner.tscn" id="1_dydni"]
+[ext_resource type="Script" uid="uid://bx7wi1c06wtyx" path="res://tests/DiscardPileTest.cs" id="3_tex3u"]
+[ext_resource type="Script" uid="uid://dyb00rnjmc8t4" path="res://tests/StackedDeckTest.cs" id="4_lmkj8"]
+[ext_resource type="Script" uid="uid://dwfvxdeusngvi" path="res://tests/HandTest.cs" id="5_rj0qa"]
 
 [node name="Tester" type="Node"]
-script = ExtResource("1_8cefx")
 
 [node name="TestRunner" parent="." instance=ExtResource("1_dydni")]
+
+[node name="ControllerTest" type="Node" parent="."]
+script = ExtResource("1_8cefx")
+
+[node name="StackedDiscardPileTest" type="Node" parent="."]
+script = ExtResource("3_tex3u")
+
+[node name="StackedDeckTest" type="Node" parent="."]
+script = ExtResource("4_lmkj8")
+
+[node name="HandTest" type="Node" parent="."]
+script = ExtResource("5_rj0qa")
