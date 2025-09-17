@@ -133,6 +133,7 @@ public partial class ControllerTester : Node
             AssertPlay(wildCard);
     }
 
+    // todo: move to cardEffectsTest
     [Test]
     private void DrawTwoEffectTest()
     {

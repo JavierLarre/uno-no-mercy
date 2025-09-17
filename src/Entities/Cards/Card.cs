@@ -5,6 +5,15 @@ public class Card
 {
     public CardColor Color { get; set; }
     public CardValue Value { get; set; }
+    
+    // todo: eliminar este constructor
+    public Card() { }
+
+    public Card(CardColor color, CardValue value)
+    {
+        Color = color;
+        Value = value;
+    }
 
     public static Card GetGreenEight() =>
         new()

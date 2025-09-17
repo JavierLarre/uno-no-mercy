@@ -18,6 +18,7 @@ public class CardController
         _discardPile = model.DiscardPile;
     }
 
+    // todo: move to GameController
     public void Start(IView view)
     {
         _view = view;
